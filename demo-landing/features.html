@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Max Reed — Personal Portfolio Features</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Custom styling overrides and animations -->
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800;900&family=Syne:wght@700;800;900&display=swap');
+    
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+    
+    .font-syne {
+      font-family: 'Syne', sans-serif;
+    }
+    
+    .font-outfit {
+      font-family: 'Outfit', sans-serif;
+    }
+
+    .liquid-glass {
+      background: rgba(255, 255, 255, 0.01);
+      background-blend-mode: luminosity;
+      backdrop-filter: blur(4px);
+      box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .liquid-glass::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      padding: 1.4px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.45) 0%, rgba(255,255,255,0.15) 20%, rgba(255,255,255,0) 40%, rgba(255,255,255,0) 60%, rgba(255,255,255,0.15) 80%, rgba(255,255,255,0.45) 100%);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+    }
+
+    @keyframes marquee-left { 
+      from { transform: translateX(0); } 
+      to { transform: translateX(-50%); } 
+    }
+    @keyframes marquee-right { 
+      from { transform: translateX(-50%); } 
+      to { transform: translateX(0); } 
+    }
+    
+    .animate-marquee-left { 
+      animation: marquee-left 22s linear infinite; 
+    }
+    .animate-marquee-right { 
+      animation: marquee-right 26s linear infinite; 
+    }
+
+    .noise-overlay {
+      position: relative;
+    }
+    
+    .noise-overlay::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.55;
+      mix-blend-mode: soft-light;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix type='matrix' values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+      background-size: 240px 240px;
+      border-radius: inherit;
+    }
+  </style>
+</head>
+<body class="bg-[#0a0a0a] text-white overflow-x-hidden selection:bg-white/10">
+
+  <section class="relative w-full min-h-screen lg:h-screen flex flex-col justify-between px-4 sm:px-6 md:px-10 lg:px-14 py-6 sm:py-8 md:py-10 select-none antialiased">
+    
+    <!-- Top Header Row - Centered Layout -->
+    <div class="flex flex-col items-center text-center max-w-3xl mx-auto gap-4 mb-8 md:mb-10 w-full">
+      <h1 class="text-[28px] sm:text-3xl md:text-4xl lg:text-[44px] leading-[1.15] font-normal tracking-tight text-white">
+        Hi, I'm Max Reed!
+      </h1>
+      <p class="text-sm md:text-[15px] leading-[1.6] text-white/60 max-w-2xl">
+        A London-based independent creator shaping sharp visual systems, web-ready products, and story-first campaigns. With a decade of craft behind me, I help ideas move with focus and intention.
+      </p>
+      <div class="mt-2">
+        <button class="liquid-glass rounded-full px-5 sm:px-6 py-2.5 sm:py-3 text-sm font-medium text-white transition-all duration-300 hover:bg-white/5 active:scale-95">
+          Let's Team Up Today
+        </button>
+      </div>
+    </div>
+
+    <!-- Grid Layout Container -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5 flex-grow w-full items-stretch">
+      
+      <!-- Column 1: Background Card -->
+      <div class="rounded-2xl bg-black relative overflow-hidden p-6 flex flex-col justify-between min-h-[380px] lg:h-full border border-white/5">
+        <!-- Background Video -->
+        <video 
+          src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260507_150203_44a5bd32-516a-47ce-a077-8acbf9aa8991.mp4" 
+          autoplay 
+          loop 
+          muted 
+          playsinline 
+          class="absolute inset-0 object-cover w-full h-full opacity-60 pointer-events-none"
+        ></video>
+
+        <!-- Top Label -->
+        <div class="flex items-center justify-center gap-2 relative z-10 w-full">
+          <i data-lucide="sparkle" class="h-3 w-3 text-white/70" stroke-width="1.5"></i>
+          <span class="uppercase tracking-[0.22em] text-[11px] text-white/70 font-semibold">BACKGROUND</span>
+          <i data-lucide="sparkle" class="h-3 w-3 text-white/70" stroke-width="1.5"></i>
+        </div>
+
+        <!-- Bottom Career Timeline -->
+        <div class="grid grid-cols-[auto_auto_1fr_auto] items-center gap-x-3 gap-y-4 relative z-10 w-full text-xs md:text-sm text-white/90">
+          <!-- Row 1 -->
+          <span class="font-semibold text-white/60 tabular-nums">2023-Now</span>
+          <i data-lucide="sparkle" class="h-3 w-3 text-white/60" stroke-width="1.5"></i>
+          <span class="font-medium">Freelance Creative</span>
+          <span class="text-white/60 text-right">Solo Studio</span>
+
+          <!-- Row 2 -->
+          <span class="font-semibold text-white/60 tabular-nums">2020-2023</span>
+          <i data-lucide="sparkle" class="h-3 w-3 text-white/60" stroke-width="1.5"></i>
+          <span class="font-medium">Head of Brand Design</span>
+          <span class="text-white/60 text-right">Rove Studio</span>
+
+          <!-- Row 3 -->
+          <span class="font-semibold text-white/60 tabular-nums">2017-2020</span>
+          <i data-lucide="sparkle" class="h-3 w-3 text-white/60" stroke-width="1.5"></i>
+          <span class="font-medium">Visual Stylist</span>
+          <span class="text-white/60 text-right">Ember Works</span>
+        </div>
+      </div>
+
+      <!-- Column 2: Client Voice + 10M+ Raised -->
+      <div class="grid grid-rows-[auto_1fr] gap-4 md:gap-5 h-full">
+        <!-- Top: Client Voice Card -->
+        <div class="rounded-2xl bg-[#324444] p-5 md:p-6 noise-overlay flex flex-col justify-between gap-4 border border-white/5 min-h-[180px] relative overflow-hidden">
+          <!-- Subtle Background Video -->
+          <video 
+            src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260507_153148_d7a3e1dd-e5d0-4ce6-8306-00d7522ecc44.mp4" 
+            autoplay 
+            loop 
+            muted 
+            playsinline 
+            class="absolute inset-0 object-cover w-full h-full opacity-20 pointer-events-none mix-blend-overlay"
+          ></video>
+
+          <div class="flex items-center gap-2 relative z-10">
+            <i data-lucide="sparkle" class="h-3 w-3 text-white/70" stroke-width="1.5"></i>
+            <span class="uppercase tracking-[0.22em] text-[11px] text-white/70 font-semibold">CLIENT VOICE</span>
+            <i data-lucide="sparkle" class="h-3 w-3 text-white/70" stroke-width="1.5"></i>
+          </div>
+
+          <p class="text-[13px] sm:text-[13.5px] leading-[1.6] text-white/85 relative z-10">
+            "Max reshaped our image with a degree of finesse and vision that surpassed what we'd hoped for. The process felt graceful, and the outcomes speak for themselves."
+          </p>
+
+          <div class="text-xs sm:text-[13px] text-white/70 relative z-10">
+            <strong class="text-white font-semibold">Elena Brooks</strong>, Creative Director — Halcyon
+          </div>
+        </div>
+
+        <!-- Bottom: 10M+ Raised Card -->
+        <div class="rounded-2xl bg-black relative overflow-hidden p-6 flex flex-col justify-between items-center border border-white/5 min-h-[220px] lg:h-full">
+          <video 
+            src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260507_154543_d5b83fc1-9cea-44f3-b5e8-8f325935211a.mp4" 
+            autoplay 
+            loop 
+            muted 
+            playsinline 
+            class="absolute inset-0 object-cover w-full h-full opacity-60 pointer-events-none"
+          ></video>
+
+          <div></div>
+          <h2 class="text-5xl sm:text-6xl md:text-7xl lg:text-[88px] font-light tracking-tight drop-shadow relative z-10 text-white my-auto font-outfit">
+            10M+
+          </h2>
+          <p class="text-white/85 text-sm font-medium relative z-10">
+            Raised for startups
+          </p>
+        </div>
+      </div>
+
+      <!-- Column 3: Daily Software + Reach Me -->
+      <div class="grid grid-rows-[1fr_auto] gap-4 md:gap-5 h-full">
+        <!-- Top: Daily Software Card -->
+        <div class="rounded-2xl bg-black relative overflow-hidden p-6 flex flex-col justify-between border border-white/5 min-h-[240px] lg:h-full">
+          <video 
+            src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260507_153148_d7a3e1dd-e5d0-4ce6-8306-00d7522ecc44.mp4" 
+            autoplay 
+            loop 
+            muted 
+            playsinline 
+            class="absolute inset-0 object-cover w-full h-full opacity-50 pointer-events-none"
+          ></video>
+
+          <div class="flex items-center justify-center gap-2 relative z-10 w-full mb-6">
+            <i data-lucide="sparkle" class="h-3 w-3 text-white/70" stroke-width="1.5"></i>
+            <span class="uppercase tracking-[0.22em] text-[11px] text-white/70 font-semibold">DAILY SOFTWARE</span>
+            <i data-lucide="sparkle" class="h-3 w-3 text-white/70" stroke-width="1.5"></i>
+          </div>
+
+          <!-- Dual Scrolling Marquee Container -->
+          <div class="w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)] relative z-10 flex flex-col gap-3 my-auto">
+            <!-- Row 1 -->
+            <div class="overflow-hidden w-full">
+              <div class="flex w-max gap-3 animate-marquee-left">
+                <!-- Figma, Framer, Palette, PenTool, Layers, Type, Aperture, Chrome -->
+                <div class="liquid-glass h-14 w-14 md:h-16 md:w-16 rounded-xl flex items-center justify-center flex-shrink-0 text-white"><i data-lucide="figma" class="h-6 w-6 md:h-7 md:w-7" stroke-width="1.5"></i></div>
+                <div class="liquid-glass h-14 w-14 md:h-16 md:w-16 rounded-xl flex items-center justify-center flex-shrink-0 text-white"><i data-lucide="framer" class="h-6 w-6 md:h-7 md:w-7" stroke-width="1.5"></i></div>
+                <div class="liquid-glass h-14 w-14 md:h-16 md:w-16 rounded-xl flex items-center justify-center flex-shrink-0 text-white"><i data-lucide="palette" class="h-6 w-6 md:h-7 md:w-7" stroke-width="1.5"></i></div>
+                <div class="liquid-glass h-14 w-14 md:h-16 md:w-16 rounded-xl flex items-center justify-center flex-shrink-0 text-white"><i data-lucide="pen-tool" class="h-6 w-6 md:h-7 md:w-7" stroke-width="1.5"></i></div>
+                <div class="liquid-glass h-14 w-14 md:h-16 md:w-16 rounded-xl flex items-center justify-center flex-shrink-0 text-white"><i data-lucide="layers" class="h-6 w-6 md:h-7 md:w-7" stroke-width="1.5"></i></div>
+                <div class="liquid-glass h-14 w-14 md:h-16 md:w-16 rounded-xl flex items-center justify-center flex-shrink-0 text-white"><i data-lucide="type" class="h-6 w-6 md:h-7 md:w-7" stroke-width="1.5"></i></div>
+                <div class="liquid-glass h-14 w-14 md:h-16 md:w-16 rounded-xl flex items-center justify-center flex-shrink-0 text-white"><i data-lucide="aperture" class="h-6 w-6 md:h-7 md:w-7" stroke-width="1.5"></i></div>
+                <div class="liquid-glass h-14 w-14 md:h-16 md:w-16 rounded-xl flex items-center justify-center flex-shrink-0 text-white"><i data-lucide="chrome" class="h-6 w-6 md:h-7 md:w-7" stroke-width="1.5"></i></div>
+                <!-- Duplicate -->
+                <div class="liquid-glass h-14 w-14 md:h-16 md:w-16 rounded-xl flex items-center justify-center flex-shrink-0 text-white"><i data-lucide="figma" class="h-6 w-6 md:h-7 md:w-7" stroke-width="1.5"></i></div>
+                <div class="liquid-glass h-14 w-14 md:h-16 md:w-16 rounded-xl flex items-center justify-center flex-shrink-0 text-white"><i data-lucide="framer" class="h-6 w-6 md:h-7 md:w-7" stroke-width="1.5"></i></div>
+                <div class="liquid-glass h-14 w-14 md:h-16 md:w-16 rounded-xl flex items-center justify-center flex-shrink-0 text-white"><i data-lucide="palette" class="h-6 w-6 md:h-7 md:w-7" stroke-width="1.5"></i></div>
+                <div class="liquid-glass h-14 w-14 md:h-16 md:w-16 rounded-xl flex items-center justify-center flex-shrink-0 text-white"><i data-lucide="pen-tool" class="h-6 w-6 md:h-7 md:w-7" stroke-width="1.5"></i></div>
+                <div class="liquid-glass h-14 w-14 md:h-16 md:w-16 rounded-xl flex items-center justify-center flex-shrink-0 text-white"><i data-lucide="layers" class="h-6 w-6 md:h-7 md:w-7" stroke-width="1.5"></i></div>
+                <div class="liquid-glass h-14 w-14 md:h-16 md:w-16 rounded-xl flex items-center justify-center flex-shrink-0 text-white"><i data-lucide="type" class="h-6 w-6 md:h-7 md:w-7" stroke-width="1.5"></i></div>
+                <div class="liquid-glass h-14 w-14 md:h-16 md:w-16 rounded-xl flex items-center justify-center flex-shrink-0 text-white"><i data-lucide="aperture" class="h-6 w-6 md:h-7 md:w-7" stroke-width="1.5"></i></div>
+                <div class="liquid-glass h-14 w-14 md:h-16 md:w-16 rounded-xl flex items-center justify-center flex-shrink-0 text-white"><i data-lucide="chrome" class="h-6 w-6 md:h-7 md:w-7" stroke-width="1.5"></i></div>
+              </div>
+            </div>
+
+            <!-- Row 2 -->
+            <div class="overflow-hidden w-full">
+              <div class="flex w-max gap-3 animate-marquee-right">
+                <!-- Camera, Brush, Box, Wand2, Figma, Framer, Type, Layers -->
+                <div class="liquid-glass h-14 w-14 md:h-16 md:w-16 rounded-xl flex items-center justify-center flex-shrink-0 text-white"><i data-lucide="camera" class="h-6 w-6 md:h-7 md:w-7" stroke-width="1.5"></i></div>
+                <div class="liquid-glass h-14 w-14 md:h-16 md:w-16 rounded-xl flex items-center justify-center flex-shrink-0 text-white"><i data-lucide="brush" class="h-6 w-6 md:h-7 md:w-7" stroke-width="1.5"></i></div>
+                <div class="liquid-glass h-14 w-14 md:h-16 md:w-16 rounded-xl flex items-center justify-center flex-shrink-0 text-white"><i data-lucide="box" class="h-6 w-6 md:h-7 md:w-7" stroke-width="1.5"></i></div>
+                <div class="liquid-glass h-14 w-14 md:h-16 md:w-16 rounded-xl flex items-center justify-center flex-shrink-0 text-white"><i data-lucide="wand-2" class="h-6 w-6 md:h-7 md:w-7" stroke-width="1.5"></i></div>
+                <div class="liquid-glass h-14 w-14 md:h-16 md:w-16 rounded-xl flex items-center justify-center flex-shrink-0 text-white"><i data-lucide="figma" class="h-6 w-6 md:h-7 md:w-7" stroke-width="1.5"></i></div>
+                <div class="liquid-glass h-14 w-14 md:h-16 md:w-16 rounded-xl flex items-center justify-center flex-shrink-0 text-white"><i data-lucide="framer" class="h-6 w-6 md:h-7 md:w-7" stroke-width="1.5"></i></div>
+                <div class="liquid-glass h-14 w-14 md:h-16 md:w-16 rounded-xl flex items-center justify-center flex-shrink-0 text-white"><i data-lucide="type" class="h-6 w-6 md:h-7 md:w-7" stroke-width="1.5"></i></div>
+                <div class="liquid-glass h-14 w-14 md:h-16 md:w-16 rounded-xl flex items-center justify-center flex-shrink-0 text-white"><i data-lucide="layers" class="h-6 w-6 md:h-7 md:w-7" stroke-width="1.5"></i></div>
+                <!-- Duplicate -->
+                <div class="liquid-glass h-14 w-14 md:h-16 md:w-16 rounded-xl flex items-center justify-center flex-shrink-0 text-white"><i data-lucide="camera" class="h-6 w-6 md:h-7 md:w-7" stroke-width="1.5"></i></div>
+                <div class="liquid-glass h-14 w-14 md:h-16 md:w-16 rounded-xl flex items-center justify-center flex-shrink-0 text-white"><i data-lucide="brush" class="h-6 w-6 md:h-7 md:w-7" stroke-width="1.5"></i></div>
+                <div class="liquid-glass h-14 w-14 md:h-16 md:w-16 rounded-xl flex items-center justify-center flex-shrink-0 text-white"><i data-lucide="box" class="h-6 w-6 md:h-7 md:w-7" stroke-width="1.5"></i></div>
+                <div class="liquid-glass h-14 w-14 md:h-16 md:w-16 rounded-xl flex items-center justify-center flex-shrink-0 text-white"><i data-lucide="wand-2" class="h-6 w-6 md:h-7 md:w-7" stroke-width="1.5"></i></div>
+                <div class="liquid-glass h-14 w-14 md:h-16 md:w-16 rounded-xl flex items-center justify-center flex-shrink-0 text-white"><i data-lucide="figma" class="h-6 w-6 md:h-7 md:w-7" stroke-width="1.5"></i></div>
+                <div class="liquid-glass h-14 w-14 md:h-16 md:w-16 rounded-xl flex items-center justify-center flex-shrink-0 text-white"><i data-lucide="framer" class="h-6 w-6 md:h-7 md:w-7" stroke-width="1.5"></i></div>
+                <div class="liquid-glass h-14 w-14 md:h-16 md:w-16 rounded-xl flex items-center justify-center flex-shrink-0 text-white"><i data-lucide="type" class="h-6 w-6 md:h-7 md:w-7" stroke-width="1.5"></i></div>
+                <div class="liquid-glass h-14 w-14 md:h-16 md:w-16 rounded-xl flex items-center justify-center flex-shrink-0 text-white"><i data-lucide="layers" class="h-6 w-6 md:h-7 md:w-7" stroke-width="1.5"></i></div>
+              </div>
+            </div>
+          </div>
+
+          <div></div>
+        </div>
+
+        <!-- Bottom: Reach Me Card -->
+        <div class="rounded-2xl bg-[#324444] p-5 md:p-6 noise-overlay flex flex-col justify-between gap-4 border border-white/5 relative min-h-[150px] overflow-hidden">
+          <!-- Subtle Background Video -->
+          <video 
+            src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260507_150203_44a5bd32-516a-47ce-a077-8acbf9aa8991.mp4" 
+            autoplay 
+            loop 
+            muted 
+            playsinline 
+            class="absolute inset-0 object-cover w-full h-full opacity-20 pointer-events-none mix-blend-overlay"
+          ></video>
+
+          <div class="flex items-center justify-between w-full relative z-10">
+            <div class="flex items-center gap-2">
+              <i data-lucide="sparkle" class="h-3 w-3 text-white/70" stroke-width="1.5"></i>
+              <span class="uppercase tracking-[0.22em] text-[11px] text-white/70 font-semibold">REACH ME</span>
+              <i data-lucide="sparkle" class="h-3 w-3 text-white/70" stroke-width="1.5"></i>
+            </div>
+            <a 
+              href="mailto:hi@maxreed.com"
+              class="h-9 w-9 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors duration-300"
+              aria-label="Send email to Max Reed"
+            >
+              <i data-lucide="arrow-up-right" class="h-4 w-4" stroke-width="1.5"></i>
+            </a>
+          </div>
+
+          <div class="flex flex-col gap-1 text-white relative z-10">
+            <a 
+              href="mailto:hi@maxreed.com" 
+              class="text-lg md:text-xl font-semibold hover:text-white/80 transition-colors tracking-tight"
+            >
+              hi@maxreed.com
+            </a>
+            <span class="text-white/60 text-sm md:text-[15px] tabular-nums font-outfit">
+              +44 207 81 63
+            </span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Initialize Lucide Icons -->
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>
